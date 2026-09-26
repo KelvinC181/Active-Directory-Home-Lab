@@ -80,8 +80,8 @@ You can read more about cloud-init in the [official documentation](https://docs.
 
 1. Create a directory for the VM in the host machine
 1. In bash, use the following commands to install the Guest Additions:\
-    *this enables native shared folders(vboxsf) for the VM, and also other functionalities, learn more in the [official documentation](https://www.virtualbox.org/manual/ch04.html)
-    *sudo apt-get install virtualbox-guest-additions-iso*
+    *this enables native shared folders(vboxsf) for the VM, and also other functionalities, learn more in the [official documentation](https://www.virtualbox.org/manual/ch04.html)\
+    *sudo apt-get install virtualbox-guest-additions-iso*\
     *sudo apt-get install virtualbox-guest-utils*
 1. In bash, use the following command to reboot the VM to apply the changes:\
     *sudo reboot*
