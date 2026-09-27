@@ -132,15 +132,15 @@ You can read more about cloud-init in the [official documentation](https://docs.
 1. Configure the inputs.conf by creating a new one in C:\Program Files\SplunkUniversalForwarder\etc\system\local \
     The way to do this is to open an admin elevated notepad, copy the content of the file in the inputs.conf in resources, and save it to the destination naming it inputs.conf
 1. Open an admin elevated services, search for SplunkForwarder
-1. Double click the service and in the Log On tab, check the Local System account box and click apply
-    <img src="assets/images/SF-logon.png" alt="the logon tab in the SplunkForwarder services" width="50%"/>\
+1. Double click the service and in the Log On tab, check the Local System account box and click apply\
+    <img src="assets/images/SF-logon.png" alt="the logon tab in the SplunkForwarder services" width="30%"/>
 1. Restart the SplunkForwarder service
 
 #### Configure Splunk:
 1. In a browser, open [splunk server ip]:8000, and login
 1. in settings, go to indexes
-1. Click new indexes and create a new index called "endpoint" and save it
-    <img src="assets/images/new-index.png" alt="creating a new index called endpoint" width="50%"/>\
+1. Click new indexes and create a new index called "endpoint" and save it\
+    <img src="assets/images/new-index.png" alt="creating a new index called endpoint" width="30%"/>
 1. In settings, go to fowarding and receiving, and click on configure receiving
 1. Click on new recieving port, enter 9997, and click save
 1. Click on the splunk logo, then click into search and reporting
