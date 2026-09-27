@@ -102,3 +102,49 @@ You can read more about cloud-init in the [official documentation](https://docs.
 1. After installation is complete, use *exit* to exit the "splunk" user bash.
 1. In bash, cd into bin and use the following command to make splunk automatically run on boot as user "splunk":\
     *sudo ./splunk enable boot-start -user splunk*
+
+### Setting up Splunk Universal Fowarder and Sysmon:
+*Do this for both the target machine and the AD server
+
+#### Setting static ip on the AD server:
+1. Open network and intenet setting and click into change nadapter options
+1. Right-click the ethernet and open properties
+1. Double click the TCP/IPv4 and change the settings to match the following image (replace information to match your designed network):
+    <img src="assets/images/Windows-static-ip.png" alt="format of the windows static ip" width="30%"/>
+1. Click ok to apply changes, in the CMD, use *ipconfig* to check it has been appplied
+    
+#### Sysmon:
+1. Download sysmon zip from microsoft and extract the files
+1. Download sysmonconfig.xml from [olafhartong's repo](https://github.com/olafhartong/sysmon-modular)\
+    <img src="assets/images/sysmon-config.png" alt="showing which file to download in the repo" width="50%"/>\
+    *from my understanding, this can help filter noise for sysmon while flagging high-risk behaviour, there are other configs but Olaf's is the most popular one
+1. Open an admin elevated powershell
+1. CD into where the file is extracted
+1. In powershell, use the following command to install sysmon:\
+    *[path]\Sysmon64.exe -i [path]\sysmonconfig.xml*
+
+#### Splunk Universal Fowarder:
+1. Download and start the Splunk Universal Fowarder installer
+1. Accept the license agreement and select an on-premise Splunk Enterprise instance
+1. Choose your username and keep the generate random password checked
+1. Press next to skip the deployment server, enter the Splunk server ip into the receiving indexer, and use the default port 9997
+1. Click install
+1. Configure the inputs.conf by creating a new one in C:\Program Files\SplunkUniversalForwarder\etc\system\local \
+    The way to do this is to open an admin elevated notepad, copy the content of the file in the inputs.conf in resources, and save it to the destination naming it inputs.conf
+1. Open an admin elevated services, search for SplunkForwarder
+1. Double click the service and in the Log On tab, check the Local System account box and click apply
+    <img src="assets/images/SF-logon.png" alt="the logon tab in the SplunkForwarder services" width="50%"/>\
+1. Restart the SplunkForwarder service
+
+#### Configure Splunk:
+1. In a browser, open [splunk server ip]:8000, and login
+1. in settings, go to indexes
+1. Click new indexes and create a new index called "endpoint" and save it
+    <img src="assets/images/new-index.png" alt="creating a new index called endpoint" width="50%"/>\
+1. In settings, go to fowarding and receiving, and click on configure receiving
+1. Click on new recieving port, enter 9997, and click save
+1. Click on the splunk logo, then click into search and reporting
+1. In the search bar, type index="endpoint" and search, check that the new hosts exists and that the source match with the inputs.conf file
+
+
+### Setting Up Active Directory:
