@@ -13,8 +13,8 @@ Hypervisor: Virtual Box\
 Tools: Sysmon, Splunk
 ### Learning Objectives
 - [x] Learning how to create, configure, and manage VMs using a hypervisor
-- [ ] Learning how to configure and manage an Active Directory server
-- [ ] Learning how to configure and manage a Splunk server (Ubuntu Server)
+- [x] Learning how to configure and manage an Active Directory server
+- [x] Learning how to configure and manage a Splunk server (Ubuntu Server)
 ### Network Design
 <br>
 <img src="assets/images/AD-Network-Diagram.png" alt="network diagram for this project" width="50%"/>
