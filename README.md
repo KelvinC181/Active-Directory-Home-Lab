@@ -178,3 +178,8 @@ Instead, it is common practice to add users, devices to organizational units.
 1. Go to the computer name tab, click change
 1. Tick the Domain tickbox, enter the name of the root domain and click ok
 1. Restart the VM, now you can use the longon name and password you set to log into that user account
+
+### Snapshot the machines
+1. Click onto you machine
+1. Go onto the snapshots tab nex to the details tab
+1. Click take on the top bar
