@@ -23,7 +23,6 @@ Tools: Sysmon, Splunk
 ## Set-up
 ### Creating and Configuring VMs
 In this project, I used Virtual Box as my hypervisor to host my VMs.\
-<br>
 
 #### Steps for hosting a VM in Virtual Box:
 1. Prepare an ISO file of the OS you want to run
@@ -34,9 +33,6 @@ In this project, I used Virtual Box as my hypervisor to host my VMs.\
     <img src="assets/images/VM-memory.png" alt="the memory and cpu section for creating a VM on Virtual Box" width="50%"/>
     <img src="assets/images/VM-harddisk.png" alt="the virtual harddisk section for creating a VM on Virtual Box" width="50%"/>
 1. Spin up the VM and install the desired OS 
-<br>
-<br>
-
 
 #### Setting up NAT Network Subnet:
 *It is important to use a NAT Network subnet to allow the VMs to discover and communicate with each other, while keeping them isolated from the home network
@@ -47,7 +43,8 @@ In this project, I used Virtual Box as my hypervisor to host my VMs.\
 1. Go back to the machines page, and for each machine, do the following steps
 1. For the "attached to" select NAT Network, and for the "name", select the name you have created.\
     <img src="assets/images/NAT-selection.png" alt="the naming section for creating a VM on Virtual Box" width="50%"/>
-
+<br>
+<br>
 
 
 ### Setting up Splunk Server
@@ -145,6 +142,39 @@ You can read more about cloud-init in the [official documentation](https://docs.
 1. Click on new recieving port, enter 9997, and click save
 1. Click on the splunk logo, then click into search and reporting
 1. In the search bar, type index="endpoint" and search, check that the new hosts exists and that the source match with the inputs.conf file
+<br>
+<br>
+
+### Configuring Active Directory:
+#### The DC
+1. On the windows server, go into server manager
+1. Under manage, select add roles and features
+1. For installation type, select role-based feature-based installation
+1. For server roles, tick the Active Directory Domain Services and click add features
+1. Leave everything else as default and install
+1. After the installation is finished, return to the homescreen and you should see a flag sign on the top right bar, click on that and click on promote this server to a domain controller
+1. Select add a new forest, for the root domain name, it must follow the format:\
+    [name]+.[*] (e.g. mylab.local)
+1. Put in a password, and continue until the install button is available and click that
+1. After installation, you should be prompted to restart
 
 
-### Setting Up Active Directory:
+#### Managing a domain
+In server manager, click on tools and select active direcort users and computers.\
+Inside the domain you created, you can see the built in containers that there by deafault, these are usually untempered with in a practical enviroment.  You cannot link a GPO to a default container.\
+Instead, it is common practice to add users, devices to organizational units.
+
+#### Adding an organisational unit
+1. Right-click on the domain, click new and select organizational unit
+
+#### Adding a user
+1. Right-click on an organizational unit, click new and select user
+1. Set up the user's name, logon name and password
+
+#### Joining a domain
+1. Go to network settings, change adapter options, IPv4, and change the preferred DNS server to point to the AD server\
+    *note: this will cause the machine to be stop querying google DNS directly, so you cannot visit website using URLs unless DNS Forwards are enabled on the AD server. 
+1. In the target machine, go to about this pc, and advanced system settings
+1. Go to the computer name tab, click change
+1. Tick the Domain tickbox, enter the name of the root domain and click ok
+1. Restart the VM, now you can use the longon name and password you set to log into that user account
