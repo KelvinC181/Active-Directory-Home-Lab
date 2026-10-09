@@ -32,4 +32,6 @@ For this attack, it relies on RDP(Remote Desktop Protocol) to connect to the tar
 1. In the seachbar, type in index="endpoint" and the username of the suspected breached account, and set the time range to the time period you suspect the account is breached
 1. In the event of a brute-force attack, a large amount of events, where the Event Code is 4625 should be spotted.  These are failed login attempts, the failiure reason should read "Unknown user name or bad password.".  It should also show the source IP adress of the attacker, in my case my kali's IP address.
     <img src="../assets/images/brute-force-attack-event.png" alt="example of an event from a brute force attack" width="100%"/>
+1. You can also see one case of a successful log-on event with the Event Code 4624, with the information of the attacker, these two combine would indicate a successful brute-force attack has happened.
+
 
