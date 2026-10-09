@@ -106,7 +106,7 @@ You can read more about cloud-init in the [official documentation](https://docs.
 #### Setting static ip on the AD server:
 1. Open network and intenet setting and click into change nadapter options
 1. Right-click the ethernet and open properties
-1. Double click the TCP/IPv4 and change the settings to match the following image (replace information to match your designed network):
+1. Double click the TCP/IPv4 and change the settings to match the following image (replace information to match your designed network):\
     <img src="assets/images/Windows-static-ip.png" alt="format of the windows static ip" width="30%"/>
 1. Click ok to apply changes, in the CMD, use *ipconfig* to check it has been appplied
     
