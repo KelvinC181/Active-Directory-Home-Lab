@@ -15,6 +15,8 @@ Tools: Sysmon, Splunk
 - [x] Learning how to create, configure, and manage VMs using a hypervisor
 - [x] Learning how to configure and manage an Active Directory server
 - [x] Learning how to configure and manage a Splunk server (Ubuntu Server)
+- [ ] Test different vulnerabilites and how to spot them in a SIEM tool
+    - [X] brute force attack
 ### Network Design
 <br>
 <img src="assets/images/AD-Network-Diagram.png" alt="network diagram for this project" width="50%"/>
@@ -104,7 +106,7 @@ You can read more about cloud-init in the [official documentation](https://docs.
 *Do this for both the target machine and the AD server
 
 #### Setting static ip on the AD server:
-1. Open network and intenet setting and click into change nadapter options
+1. Open network and intenet setting and click into change adapter options
 1. Right-click the ethernet and open properties
 1. Double click the TCP/IPv4 and change the settings to match the following image (replace information to match your designed network):\
     <img src="assets/images/Windows-static-ip.png" alt="format of the windows static ip" width="30%"/>
@@ -173,11 +175,11 @@ Instead, it is common practice to add users, devices to organizational units.
 
 #### Joining a domain
 1. Go to network settings, change adapter options, IPv4, and change the preferred DNS server to point to the AD server\
-    *note: this will cause the machine to be stop querying google DNS directly, so you cannot visit website using URLs unless DNS Forwards are enabled on the AD server. 
+    *note: this will cause the machine to be stop querying google DNS directly, so you cannot visit website using URLs unless DNS Forwarding is enabled on the AD server. 
 1. In the target machine, go to about this pc, and advanced system settings
 1. Go to the computer name tab, click change
 1. Tick the Domain tickbox, enter the name of the root domain and click ok
-1. Restart the VM, now you can use the longon name and password you set to log into that user account
+1. Restart the VM, now you can use the logon name and password you set to log into a user account
 
 ### Snapshot the machines
 1. Click onto you machine
